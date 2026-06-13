@@ -13,59 +13,56 @@ export interface Iwebsite extends Document {
     updatedAt: Date;
 }
 
-
 const WebsiteSchema = new Schema<Iwebsite>(
-  {
-    domain: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
+    {
+        domain: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true,
+        },
+        name: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        province: {
+            type: String,
+            default: "",
+        },
+        city: {
+            type: String,
+            default: "",
+        },
+        stars: {
+            type: Number,
+            min: 1,
+            max: 5,
+            default: 1,
+        },
+        grantDate: {
+            type: String,
+            default: "",
+        },
+        expiryDate: {
+            type: String,
+            default: "",
+        },
+        trustSealUrl: {
+            type: String,
+            default: "",
+        },
     },
-    name: {
-      type: String,
-      required: true,
-      trim: true,
+    {
+        timestamps: true,
     },
-    province: {
-      type: String,
-      default: "",
-    },
-    city: {
-      type: String,
-      default: "",
-    },
-    stars: {
-      type: Number,
-      min: 1,
-      max: 5,
-      default: 1,
-    },
-    grantDate: {
-      type: String,
-      default: "",
-    },
-    expiryDate: {
-      type: String,
-      default: "",
-    },
-    trustSealUrl: {
-      type: String,
-      default: "",
-    },
-  },
-  {
-    timestamps: true, 
-  }
 );
 
-WebsiteSchema.index({ domain: 1 });
 WebsiteSchema.index({ stars: 1 });
 WebsiteSchema.index({ city: 1 });
 WebsiteSchema.index({ expiryDate: 1 });
 WebsiteSchema.index({ name: "text" }); // for text search on name
 
-
-const website = mongoose.model<Iwebsite>("website",WebsiteSchema);
+const website = mongoose.model<Iwebsite>("website", WebsiteSchema);
 
 export default website;
