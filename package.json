@@ -7,7 +7,7 @@
         "dev": "nodemon --exec ts-node src/server.ts",
         "build": "tsc",
         "start": "node dist/server.js",
-        "crawl": "ts-node src/scripts/crawl.ts" 
+        "crawl": "ts-node src/scripts/crawl.ts"
     },
     "keywords": [],
     "author": "",
@@ -15,8 +15,10 @@
     "type": "commonjs",
     "dependencies": {
         "@apollo/server": "^5.5.1",
+        "@as-integrations/express5": "^1.1.2",
         "axios": "^1.17.0",
         "cheerio": "^1.2.0",
+        "cors": "^2.8.6",
         "dotenv": "^17.4.2",
         "express": "^5.2.1",
         "graphql": "^16.14.2",
