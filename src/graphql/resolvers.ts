@@ -14,7 +14,7 @@ export const resolvers = {
                 filter.province = args.province;
             }
             if (args.stars) {
-                filter.start = args.stars;
+                filter.stars = args.stars;
             }
             return await website.find(filter).lean();
         },

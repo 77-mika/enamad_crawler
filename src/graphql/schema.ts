@@ -1,4 +1,3 @@
-
 export const typeDefs = `#graphql
 
 type Website {
@@ -14,10 +13,14 @@ type Website {
 }
 
 type Query {
-    websites(
-    city : String
-    province : String
+  websites(
+    name: String
+    domain: String
+    city: String
     stars: Int
+    expiryDate: String
+    grantDate:String
+    trustSealUrl: String
   ): [Website!]!
 }
 `;
