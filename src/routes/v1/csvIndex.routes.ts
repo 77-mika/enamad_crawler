@@ -3,6 +3,49 @@ import website from "../../models/websites";
 
 const router = Router();
 
+/**
+ * @swagger
+ * /api/v1/export-csv:
+ *   get:
+ *     summary: Export websites as a CSV file
+ *     description: Returns a CSV file containing the requested fields for every website in the database.
+ *     tags:
+ *       - CSV Export
+ *     parameters:
+ *       - in: query
+ *         name: fields
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Comma-separated list of fields to include (e.g. "name,url,city,stars")
+ *         example: "name,domain,city,stars"
+ *     responses:
+ *       200:
+ *         description: CSV file containing the requested fields
+ *         content:
+ *           text/csv:
+ *             schema:
+ *               type: string
+ *               format: binary
+ *       400:
+ *         description: Missing required "fields" query parameter
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
 router.get("/", async (req: Request, res: Response) => {
     try {
         const fieldsParam = req.query.fields as string;

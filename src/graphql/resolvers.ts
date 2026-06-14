@@ -3,7 +3,6 @@ import website from "../models/websites";
 export const resolvers = {
     Query: {
         websites: async (_: unknown, args: any) => {
-            console.log("ARGS:", args);
 
             const filter: any = {};
 
